@@ -23,7 +23,7 @@ jobs:
     - name: 🛠️ Setup Node.js (Jika menggunakan Vite/Mix)
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '24'
         
     - name: 🏗️ NPM Install and Build
       run: |

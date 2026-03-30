@@ -1,11 +1,22 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('pages.index');});
+Route::get('/services', [FrontendController::class, 'services'])->name('services');
+Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+
+
+Route::get('/locale/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'id'])) {
+        session()->put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('locale.switch');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

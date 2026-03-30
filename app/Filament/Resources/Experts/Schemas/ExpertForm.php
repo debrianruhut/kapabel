@@ -44,7 +44,8 @@ class ExpertForm
                     FileUpload::make('photo')
                         ->label('Foto Profil')
                         ->image()
-                        ->directory('experts') // Akan tersimpan di storage/app/public/experts
+                        ->directory('experts')
+                        ->disk('public')
                         ->required(),
                         
                     Textarea::make('bio')
