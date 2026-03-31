@@ -30,16 +30,20 @@ jobs:
         npm install
         npm run build
         
-    - name: 🚀 Sync files to Hosting via FTP
+    - name: 🚀 Sync Core Laravel Files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /home/notiontr/kapabelindonesia/ # Sesuaikan dengan direktori root website Anda di hosting
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          tests/**
-          .env.example
+        server-dir: /home/notiontr/kapabelindonesia/
+        exclude: '["**/.git*", "**/.git*/**", "**/node_modules/**", "tests/**", ".env.example", "public/**"]'
+
+    - name: 🌐 Sync Public Folder to Public HTML
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./public/
+        server-dir: /home/notiontr/public_html/kapabelindonesia.com/
