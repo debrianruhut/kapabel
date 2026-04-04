@@ -1,4 +1,10 @@
 @extends('layouts.app')
+
+@section('title', 'Latest Insights & News - Kapabel Indonesia')
+@section('meta_description', 'Read our latest perspectives and insights on financial strategy, tax compliance, and business technologies.')
+@section('meta_keywords', 'Kapabel Blog, Financial News, Tax Updates Indonesia, Business Strategy Articles, Accounting Insights')
+@section('og_title', 'Insights & News | Kapabel Indonesia')
+@section('og_description', 'Discover our expert perspectives on finance, strategy, and technology.')
 @push('styles')
 <style>
     :root { --primary-color: #0F172A; --accent-color: #3B82F6; --text-color: #334155; }
@@ -42,79 +48,67 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="row g-4">
+                    @forelse($articles as $article)
                     <div class="col-md-6">
                         <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" class="blog-card-img" alt="Blog 1">
+                            @if($article->image)
+                                <img src="{{ asset('storage/' . $article->image) }}" class="blog-card-img" alt="{{ $article->title }}">
+                            @else
+                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" class="blog-card-img" alt="{{ $article->title }}">
+                            @endif
                             <div class="card-body p-4">
-                                <div class="mb-2 text-muted small"><i class="bi bi-calendar3 me-2"></i> Oct 24, 2024</div>
-                                <h5 class="fw-bold"><a href="blog-detail.html" class="text-decoration-none text-dark">Navigating Market Volatility</a></h5>
-                                <p class="text-muted small">Strategies for maintaining liquidity during uncertain times.</p>
-                                <a href="blog-detail.html" class="text-primary small text-decoration-none">Read More &rarr;</a>
+                                <div class="mb-2 text-muted small"><i class="bi bi-calendar3 me-2"></i> {{ $article->created_at->format('M d, Y') }}</div>
+                                <h5 class="fw-bold"><a href="{{ route('blog.article', $article->slug) }}" class="text-decoration-none text-dark">{{ $article->title }}</a></h5>
+                                <p class="text-muted small">{{ Str::limit(strip_tags($article->excerpt ?? $article->content), 80) }}</p>
+                                <a href="{{ route('blog.article', $article->slug) }}" class="text-primary small text-decoration-none">Read More &rarr;</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692" class="blog-card-img" alt="Blog 2">
-                            <div class="card-body p-4">
-                                <div class="mb-2 text-muted small"><i class="bi bi-calendar3 me-2"></i> Oct 18, 2024</div>
-                                <h5 class="fw-bold"><a href="blog-detail.html" class="text-decoration-none text-dark">AI in Financial Auditing</a></h5>
-                                <p class="text-muted small">How AI is automating compliance and reducing error.</p>
-                                <a href="blog-detail.html" class="text-primary small text-decoration-none">Read More &rarr;</a>
-                            </div>
-                        </div>
+                    @empty
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted">Stay tuned! Exciting insights are on the way.</p>
                     </div>
-                        <div class="col-md-6">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" class="blog-card-img" alt="Blog 3">
-                            <div class="card-body p-4">
-                                <div class="mb-2 text-muted small"><i class="bi bi-calendar3 me-2"></i> Sep 30, 2024</div>
-                                <h5 class="fw-bold"><a href="blog-detail.html" class="text-decoration-none text-dark">Remote Work Culture</a></h5>
-                                <p class="text-muted small">Building high-performance teams across different timezones.</p>
-                                <a href="blog-detail.html" class="text-primary small text-decoration-none">Read More &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" class="blog-card-img" alt="Blog 4">
-                            <div class="card-body p-4">
-                                <div class="mb-2 text-muted small"><i class="bi bi-calendar3 me-2"></i> Sep 15, 2024</div>
-                                <h5 class="fw-bold"><a href="blog-detail.html" class="text-decoration-none text-dark">Tax Regulation Updates</a></h5>
-                                <p class="text-muted small">What the new 2025 fiscal policies mean for your corporation.</p>
-                                <a href="blog-detail.html" class="text-primary small text-decoration-none">Read More &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
 
+                @if(method_exists($articles, 'links'))
                 <nav class="mt-5">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item active"><a class="page-link bg-primary border-primary" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link text-primary" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link text-primary" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link text-primary" href="#">Next</a></li>
-                    </ul>
+                    {{ $articles->links('pagination::bootstrap-5') }}
                 </nav>
+                @endif
             </div>
 
             <div class="col-lg-4 mt-5 mt-lg-0 ps-lg-5">
-                <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
+                <form action="{{ route('blog') }}" method="GET" class="bg-white p-4 rounded-4 shadow-sm mb-4">
                     <h5 class="fw-bold mb-3">Search</h5>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Keywords...">
-                        <button class="btn btn-primary text-white"><i class="bi bi-search"></i></button>
+                        <input type="hidden" name="category" value="{{ request('category') }}">
+                        <input type="hidden" name="tag" value="{{ request('tag') }}">
+                        <input type="text" name="search" class="form-control" placeholder="Keywords..." value="{{ request('search') }}">
+                        <button type="submit" class="btn btn-primary text-white"><i class="bi bi-search"></i></button>
                     </div>
-                </div>
+                </form>
 
                 <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
                     <h5 class="fw-bold mb-3">Categories</h5>
-                    <a href="#" class="category-link">Financial Strategy <span class="float-end text-muted small">(12)</span></a>
-                    <a href="#" class="category-link">Tax Advisory <span class="float-end text-muted small">(8)</span></a>
-                    <a href="#" class="category-link">Business Tech <span class="float-end text-muted small">(5)</span></a>
-                    <a href="#" class="category-link">Human Resources <span class="float-end text-muted small">(4)</span></a>
-                    <a href="#" class="category-link">Case Studies <span class="float-end text-muted small">(7)</span></a>
+                    <a href="{{ route('blog', ['search' => request('search'), 'tag' => request('tag')]) }}" class="category-link {{ !request('category') ? 'text-primary fw-bold' : '' }}">All Categories</a>
+                    @foreach($categories as $cat)
+                    <a href="{{ route('blog', ['category' => $cat->slug, 'search' => request('search'), 'tag' => request('tag')]) }}" class="category-link {{ request('category') == $cat->slug ? 'text-primary fw-bold' : '' }}">
+                        {{ $cat->name }} <span class="float-end text-muted small">({{ $cat->articles_count }})</span>
+                    </a>
+                    @endforeach
+                </div>
+
+                <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
+                    <h5 class="fw-bold mb-3">Tags</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="{{ route('blog', ['search' => request('search'), 'category' => request('category')]) }}" class="badge bg-{{ !request('tag') ? 'primary' : 'light text-dark' }} text-decoration-none">All Tags</a>
+                        @foreach($tags as $tagObj)
+                        <a href="{{ route('blog', ['tag' => $tagObj->slug, 'search' => request('search'), 'category' => request('category')]) }}" class="badge bg-{{ request('tag') == $tagObj->slug ? 'primary' : 'light text-dark' }} text-decoration-none border">
+                            {{ $tagObj->name }}
+                        </a>
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="bg-primary p-4 rounded-4 shadow-sm text-white text-center">

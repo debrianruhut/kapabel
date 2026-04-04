@@ -157,7 +157,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <span class="badge bg-primary bg-opacity-25 text-info mb-3 px-3 py-2 rounded-pill">Premier {{ __('Financial Advisory') }}</span>
+                <span class="badge bg-primary bg-opacity-25 text-info mb-3 px-3 py-2 rounded-pill">{{ __('Premier Financial Advisory') }}</span>
                 <h1 class="display-4 mb-4 lh-tight"> {{ __('Indonesia\'s Hub for') }}<br><span class="text-info"> Financial, Tax, and Business Consultants.</span></h1>
                 <p class="lead mb-4 text-white fw-light">{{ __('Find the Right Consultant. Grow Your Business.') }}</p>
                 <div class="d-flex gap-3">
@@ -334,65 +334,24 @@
                 <h2 class="display-6 mb-0">{{ __('Meet Our Experts') }}</h2>
             </div>
             <div class="col-md-4 text-md-end">
-                <a href="{{ url('/about') }}" class="btn btn-outline-primary">{{ __('View All Team') }} &rarr;</a>
+                <a href="{{ route('experts.index') }}" class="btn btn-outline-primary">{{ __('View All Experts') }} &rarr;</a>
             </div>
         </div>
 
         <div class="row g-4">
+            @foreach($experts as $expert)
             <div class="col-md-3">
                 <div class="card h-100 border-0 shadow-sm">
-                    <img src="{{ asset('assets/images/guntur2.jpg') }}" class="card-img-top team-img" alt="Guntur Hidayat">
+                    <img src="{{ Storage::disk('public')->url($expert->photo) }}" class="card-img-top team-img" alt="{{ $expert->name }}" onerror="this.onerror=null; this.src='{{ asset('assets/images/user-placeholder.png') }}';">
                     <div class="card-body p-4">
-                        <h5 class="mb-1">Guntur Hidayat, S.S.T., M.Sc. (Acc.), CFS</h5>
-                        <p class="text-primary small mb-3">Strategic Tax Partner</p>
-                        <p class="text-muted small">Experienced accounting, taxation, and finance professional with
-                            14+ years of expertise. Passionate about resolving business challenges and delivering
-                            effective solutions.</p>
-                        <a href="{{ url('/guntur') }}" class="text-decoration-none small mt-2 d-inline-block">{{ __('View Profile') }}
-                            &rarr;</a>
+                        <h5 class="mb-1">{{ $expert->name }}</h5>
+                        <p class="text-primary small mb-3">{{ $expert->position }}</p>
+                        <p class="text-muted small">{{ Str::limit(strip_tags($expert->bio), 120) }}</p>
+                        <a href="{{ url('/expert/' . $expert->slug) }}" class="text-decoration-none small mt-2 d-inline-block">{{ __('View Profile') }} &rarr;</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="{{ asset('assets/images/debrian2.jpg') }}" class="card-img-top team-img" alt="Debrian Ruhut Saragih">
-                    <div class="card-body p-4">
-                        <h5 class="mb-1">Debrian Ruhut Saragih, S.Tr.Ak., M.M.</h5>
-                        <p class="text-primary small mb-3">Senior Consultant</p>
-                        <p class="text-muted small">Specializing in internal audit, fraud detection, and risk
-                            management. A former auditor at BPKP with proven management, problem-solving, and
-                            strategic thinking skills.</p>
-                        <a href="{{ url('/debrian') }}" class="text-decoration-none small mt-2 d-inline-block">{{ __('View Profile') }}
-                            &rarr;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="{{ asset('assets/images/wandestarido2.jpg') }}" class="card-img-top team-img" alt="Wandestarido">
-                    <div class="card-body p-4">
-                        <h5 class="mb-1">Wandestarido, S.E., M.Si., Ak., CA., BKP., CPA., CFI.</h5>
-                        <p class="text-primary small mb-3">Principal Tax Consultant</p>
-                        <p class="text-muted small">A licensed Public Accountant and Tax Consultant with over two
-                            decades of expertise in auditing, taxation, and corporate finance.</p>
-                        <a href="{{ url('/wandestarido') }}" class="text-decoration-none small mt-2 d-inline-block">View
-                            Profile &rarr;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="{{ asset('assets/images/andreas2.jpg') }}" class="card-img-top team-img" alt="Andreas Budiman">
-                    <div class="card-body p-4">
-                        <h5 class="mb-1">Adv. Andreas Budiman, S.E., S.H., M.Si., M.H., BKP</h5>
-                        <p class="text-primary small mb-3">Tax Defense Advocate</p>
-                        <p class="text-muted small">Since 2009, Adv. Andreas Budiman has established a reputation
-                            for transforming complex financial data into legal certainty.</p>
-                        <a href="{{ url('/andreas-budiman') }}" class="text-decoration-none small mt-2 d-inline-block">View
-                            Profile &rarr;</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -408,51 +367,30 @@
         </div>
 
         <div class="row g-4">
+            @forelse($articles as $article)
             <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Strategy" style="height: 200px; object-fit: cover;">
+                    @if($article->image)
+                        <img src="{{ asset('storage/' . $article->image) }}" class="card-img-top" alt="{{ $article->title }}" style="height: 200px; object-fit: cover;">
+                    @else
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top" alt="{{ $article->title }}" style="height: 200px; object-fit: cover;">
+                    @endif
                     <div class="card-body p-4">
-                        <span class="badge bg-primary bg-opacity-10 text-primary mb-2">Strategy</span>
-                        <h5 class="fw-bold mb-3"><a href="{{ url('/blog-detail') }}"
-                                class="text-decoration-none text-dark">Navigating Market Volatility in 2024</a></h5>
-                        <p class="text-muted small mb-4">Key strategies for maintaining liquidity and operational
-                            resilience during uncertain economic times.</p>
-                        <a href="{{ url('/blog-detail') }}" class="text-primary small text-decoration-none">{{ __('Read Article') }}
+                        <span class="badge bg-primary bg-opacity-10 text-primary mb-2">{{ $article->category->name ?? 'Insight' }}</span>
+                        <h5 class="fw-bold mb-3"><a href="{{ route('blog.article', $article->slug) }}"
+                                class="text-decoration-none text-dark">{{ $article->title }}</a></h5>
+                        <p class="text-muted small mb-4">{{ Str::limit(strip_tags($article->excerpt ?? $article->content), 80) }}</p>
+                        <a href="{{ route('blog.article', $article->slug) }}" class="text-primary small text-decoration-none">{{ __('Read Article') }}
                             &rarr;</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Technology" style="height: 200px; object-fit: cover;">
-                    <div class="card-body p-4">
-                        <span class="badge bg-primary bg-opacity-10 text-primary mb-2">Technology</span>
-                        <h5 class="fw-bold mb-3"><a href="{{ url('/blog-detail') }}"
-                                class="text-decoration-none text-dark">The Role of AI in Financial Auditing</a></h5>
-                        <p class="text-muted small mb-4">How artificial intelligence is automating compliance checks
-                            and reducing human error.</p>
-                        <a href="{{ url('/blog-detail') }}" class="text-primary small text-decoration-none">{{ __('Read Article') }}
-                            &rarr;</a>
-                    </div>
-                </div>
+            @empty
+            <div class="col-12 text-center py-4">
+                <p class="text-muted">Stay tuned! Exciting insights are on the way.</p>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Management" style="height: 200px; object-fit: cover;">
-                    <div class="card-body p-4">
-                        <span class="badge bg-primary bg-opacity-10 text-primary mb-2">Management</span>
-                        <h5 class="fw-bold mb-3"><a href="{{ url('/blog-detail') }}"
-                                class="text-decoration-none text-dark">Building a Remote-First Culture</a></h5>
-                        <p class="text-muted small mb-4">Best practices for HR leaders to maintain productivity and
-                            morale in distributed teams.</p>
-                        <a href="{{ url('/blog-detail') }}" class="text-primary small text-decoration-none">{{ __('Read Article') }}
-                            &rarr;</a>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
         <div class="text-center mt-4 d-md-none">
             <a href="{{ url('/blog') }}" class="btn btn-outline-primary">{{ __('View All Articles') }}</a>

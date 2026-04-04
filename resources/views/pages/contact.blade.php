@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('title', 'Contact Us - Kapabel Indonesia')
+@section('meta_description', 'Get in touch with Kapabel Indonesia for tax consultation, financial advisory, and holistic business strategy. Reach our headquarters in SCBD Jakarta.')
+@section('og_title', 'Contact Kapabel Indonesia')
+@section('og_description', 'Let\'s Discuss Your Strategy. Connect with our expert advisors today.')
 @push('styles')
 <style>
     :root { --primary-color: #0F172A; --accent-color: #3B82F6; --text-color: #334155; }

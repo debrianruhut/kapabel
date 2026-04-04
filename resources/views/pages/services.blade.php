@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Services & Expertise - Kapabel Indonesia')
+@section('meta_description', 'Explore Kapabel Indonesia\'s comprehensive consulting solutions: Tax Compliance, Tax Education, and Strategic Financial Advisory tailored for your growth.')
+@section('meta_keywords', 'Financial Advisory Services, Tax Consulting, Strategic Business Solutions, Coretax Assistance, Capital Structure')
+@section('og_title', 'Our Expertise & Services | Kapabel Indonesia')
+@section('og_description', 'Comprehensive consulting solutions designed to navigate complexity and drive sustainable growth for your enterprise.')
+
 @push('styles')
 <style>
     :root { 

@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('title', 'About Us - Kapabel Indonesia')
+@section('meta_description', 'Learn about Kapabel Indonesia, our history, and our founding board of directors dedicated to operational excellence since 2022.')
+@section('og_title', 'Who We Are | Kapabel Indonesia')
+@section('og_description', 'Driving financial clarity and operational excellence. Meet the founders of Kapabel.')
 @push('styles')
 <style>
     :root { --primary-color: #0F172A; --accent-color: #3B82F6; --text-color: #334155; }
@@ -58,49 +63,21 @@
     <div class="container py-5">
         <div class="text-center mb-5">
             <h6 class="text-primary fw-bold text-uppercase">Our Team</h6>
-            <h2 class="fw-bold">Meet the Experts</h2>
+            <h2 class="fw-bold">Meet the Founder</h2>
         </div>
         <div class="row g-4">
+            @foreach($experts as $expert)
             <div class="col-md-3">
                 <div class="card h-100 border-0 shadow-sm">
-                    <img src="assets/images/guntur2.jpg" class="team-img" alt="Guntur Hidayat">
+                    <img src="{{ Storage::disk('public')->url($expert->photo) }}" class="team-img" alt="{{ $expert->name }}" onerror="this.onerror=null; this.src='{{ asset('assets/images/user-placeholder.png') }}';">
                     <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-1">Guntur Hidayat, S.S.T., M.Sc., CFS</h5>
-                        <p class="text-muted small mb-3">Strategic Tax Partner</p>
-                        <a href="guntur.html" class="btn btn-outline-primary btn-sm rounded-pill px-4">View Profile</a>
+                        <h5 class="fw-bold mb-1">{{ $expert->name }}</h5>
+                        <p class="text-muted small mb-3">{{ $expert->position }}</p>
+                        <a href="{{ route('expert', $expert->slug) }}" class="btn btn-outline-primary btn-sm rounded-pill px-4">{{ __('View Profile') }}</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="assets/images/debrian2.jpg" class="team-img" alt="Debrian Ruhut Saragih">
-                    <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-1">Debrian Ruhut Saragih, S.Tr.Ak., M.M.</h5>
-                        <p class="text-muted small mb-3">Senior Consultant</p>
-                        <a href="debrian.html" class="btn btn-outline-primary btn-sm rounded-pill px-4">View Profile</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="assets/images/wandestarido2.jpg" class="team-img" alt="Wandestarido">
-                    <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-1">Wandestarido, S.E., M.Si., Ak., CA., BKP., CPA., CFI.</h5>
-                        <p class="text-muted small mb-3">Principal Tax Consultant</p>
-                        <a href="wandestarido.html" class="btn btn-outline-primary btn-sm rounded-pill px-4">View Profile</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="assets/images/andreas2.jpg" class="team-img" alt="Andreas Budiman">
-                    <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-1">Andreas Budiman, S.E., S.H., M.Si., M.H., BKP</h5>
-                        <p class="text-muted small mb-3">Tax Defense Advocate</p>
-                        <a href="andreas-budiman.html" class="btn btn-outline-primary btn-sm rounded-pill px-4">View Profile</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

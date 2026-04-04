@@ -109,7 +109,7 @@ class ExpertForm
                                     ->columnSpanFull(),
                                 TextInput::make('periode')
                                     ->label('Periode (Cth: 2020 - 2023)')
-                                    ->required()
+                                    // ->required()
                                     ->columnSpanFull(),
                                 Textarea::make('deskripsi')
                                     ->label('Deskripsi Singkat')
