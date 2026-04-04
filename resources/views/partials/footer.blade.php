@@ -27,11 +27,9 @@
             <div class="col-lg-4 col-md-6">
                 <h5>Contact Us</h5>
                 <ul class="list-unstyled small d-flex flex-column gap-3">
-                    <li class="d-flex"><i class="bi bi-geo-alt text-primary me-3"></i> SCBD District 8, Treasury
-                        Tower<br>Jakarta, Indonesia 12190</li>
-                    <li class="d-flex"><i class="bi bi-envelope text-primary me-3"></i> kapabel.indonesia@gmail.com
-                    </li>
-                    <li class="d-flex"><i class="bi bi-telephone text-primary me-3"></i> +62 82 11499 4207</li>
+                    <li class="d-flex"><i class="bi bi-geo-alt text-primary me-3"></i> {{ $contactInfo['contact_address'] ?? 'SCBD District 8, Treasury Tower Jakarta, Indonesia 12190' }}</li>
+                    <li class="d-flex"><i class="bi bi-envelope text-primary me-3"></i> <a href="mailto:{{ $contactInfo['contact_email'] ?? 'kapabel.indonesia@gmail.com' }}" class="text-secondary text-decoration-none">{{ $contactInfo['contact_email'] ?? 'kapabel.indonesia@gmail.com' }}</a></li>
+                    <li class="d-flex"><i class="bi bi-telephone text-primary me-3"></i> <a href="tel:{{ $contactInfo['contact_phone'] ?? '+62 82 11499 4207' }}" class="text-secondary text-decoration-none">{{ $contactInfo['contact_phone'] ?? '+62 82 11499 4207' }}</a></li>
                 </ul>
             </div>
         </div>

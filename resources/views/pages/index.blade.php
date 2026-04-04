@@ -430,45 +430,27 @@
                 </div>
 
                 <div class="accordion accordion-flush" id="faqAccordion">
-                    <div class="accordion-item border-bottom">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button fw-bold py-4 collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#faq1">
-                                {{ __('How does your pricing structure work?') }}
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">
-                                We offer flexible pricing models tailored to project scope. This includes hourly rates for advisory sessions, fixed-project fees for defined deliverables (like audits), and retainer models for ongoing support.
+                    @if($faqSetting && is_array($faqSetting->qa_list))
+                        @foreach($faqSetting->qa_list as $index => $qa)
+                            @if(isset($qa['is_active']) && $qa['is_active'])
+                            <div class="accordion-item border-bottom">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold py-4 collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq{{ $index }}">
+                                        {{ $qa['question'] }}
+                                    </button>
+                                </h2>
+                                <div id="faq{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-muted">
+                                        {{ $qa['answer'] }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item border-bottom">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button fw-bold py-4 collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#faq2">
-                                {{ __('Which industries do you specialize in?') }}
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">
-                                Our core expertise covers Manufacturing, Fintech, Retail, and Healthcare sectors. However, our strategic frameworks are adaptable to most B2B and B2C industries.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item border-bottom">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button fw-bold py-4 collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#faq3">
-                                {{ __('How do I start a consultation?') }}
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">
-                                Simply click the "Get in Touch" button. We offer a complimentary 30-minute initial discovery call to understand your challenges and determine if we are the right fit.
-                            </div>
-                        </div>
-                    </div>
+                            @endif
+                        @endforeach
+                    @else
+                        <p class="text-muted text-center py-4">No FAQs available at the moment.</p>
+                    @endif
                 </div>
             </div>
         </div>

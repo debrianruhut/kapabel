@@ -58,7 +58,7 @@
                         <div class="icon-wrapper"><i class="bi bi-geo-alt-fill"></i></div>
                         <div>
                             <h6 class="fw-bold mb-1">Headquarters</h6>
-                            <p class="text-muted mb-0 small">SCBD District 8, Treasury Tower<br>South Jakarta, Indonesia 12190</p>
+                            <p class="text-muted mb-0 small">{{ $contactInfo['contact_address'] ?? 'SCBD District 8, Treasury Tower Jakarta, Indonesia 12190' }}</p>
                         </div>
                     </div>
 
@@ -66,7 +66,7 @@
                         <div class="icon-wrapper"><i class="bi bi-envelope-fill"></i></div>
                         <div>
                             <h6 class="fw-bold mb-1">Email Us</h6>
-                            <p class="text-muted mb-0 small">kapabel.indonesia@gmail.com</p>
+                            <p class="text-muted mb-0 small">{{ $contactInfo['contact_email'] ?? 'kapabel.indonesia@gmail.com' }}</p>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
                         <div class="icon-wrapper"><i class="bi bi-telephone-fill"></i></div>
                         <div>
                             <h6 class="fw-bold mb-1">Call Us</h6>
-                            <p class="text-muted mb-0 small">+62 82 11499 4207<br>Mon - Fri, 9am - 5pm</p>
+                            <p class="text-muted mb-0 small">{{ $contactInfo['contact_phone'] ?? '+62 82 11499 4207' }}<br>{{ $contactInfo['contact_hour'] ?? 'Mon - Fri, 9am - 5pm' }}</p>
                         </div>
                     </div>
 
@@ -91,28 +91,64 @@
             <div class="col-lg-7">
                 <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border h-100">
                     <h3 class="mb-4">Send a Message</h3>
-                    <form>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-uppercase text-muted">Full Name</label>
-                                <input type="text" class="form-control" placeholder="John Doe">
+                                <input type="text" name="full_name" class="form-control" placeholder="John Doe" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-uppercase text-muted">Email Address</label>
-                                <input type="email" class="form-control" placeholder="name@company.com">
+                                <input type="email" name="email" class="form-control" placeholder="name@company.com" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label small fw-bold text-uppercase text-muted">Service Interest</label>
-                                <select class="form-select">
-                                    <option>General Inquiry</option>
-                                    <option>Tax Consultation</option>
-                                    <option>Audit Services</option>
-                                    <option>Management Consulting</option>
+                                <select name="service_interest" class="form-select" required>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Tax Consultation">Tax Consultation</option>
+                                    <option value="Audit Services">Audit Services</option>
+                                    <option value="Management Consulting">Management Consulting</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-uppercase text-muted">Phone Number</label>
+                                <input type="text" name="phone" class="form-control" placeholder="+62 8xx xxxx xxxx">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-uppercase text-muted">Company Name</label>
+                                <input type="text" name="company" class="form-control" placeholder="Your Company">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-uppercase text-muted">Budget Estimation</label>
+                                <select name="budget" class="form-select">
+                                    <option value="" disabled selected>Select Budget</option>
+                                    <option value="Under IDR 50M">Under IDR 50M</option>
+                                    <option value="IDR 50M - 100M">IDR 50M - 100M</option>
+                                    <option value="Above IDR 100M">Above IDR 100M</option>
+                                    <option value="Not Sure">Not Sure</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-uppercase text-muted">Timeline</label>
+                                <select name="timeline" class="form-select">
+                                    <option value="" disabled selected>Select Timeline</option>
+                                    <option value="Immediately">Immediately</option>
+                                    <option value="1-3 Months">1 - 3 Months</option>
+                                    <option value="3-6 Months">3 - 6 Months</option>
+                                    <option value="Not Sure">Not Sure</option>
                                 </select>
                             </div>
                             <div class="col-12">
+                                <label class="form-label small fw-bold text-uppercase text-muted">How did you hear about us?</label>
+                                <input type="text" name="how_did_you_hear" class="form-control" placeholder="Google, LinkedIn, Referral, etc.">
+                            </div>
+                            <div class="col-12">
                                 <label class="form-label small fw-bold text-uppercase text-muted">Message</label>
-                                <textarea class="form-control" rows="6" placeholder="Tell us about your project or inquiry..."></textarea>
+                                <textarea name="message" class="form-control" rows="6" placeholder="Tell us about your project or inquiry..." required></textarea>
                             </div>
                             <div class="col-12 mt-4">
                                 <button type="submit" class="btn btn-primary w-100 py-3 text-white">Send Message</button>
