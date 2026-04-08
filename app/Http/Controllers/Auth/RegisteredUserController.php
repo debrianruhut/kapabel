@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.register-new');
     }
 
     /**
@@ -33,13 +33,41 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'account_type' => ['required', 'in:client,expert'],
+            'phone' => ['required', 'string', 'max:255'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
+
+        if ($request->account_type === 'client') {
+            $user->assignRole('Client');
+            \App\Models\Client::create([
+                'user_id' => $user->id,
+                'slug' => \Illuminate\Support\Str::slug($request->company_name ?? $request->name),
+                'company_name' => $request->company_name ?? 'N/A',
+                'company_email' => $request->email,
+                'company_phone' => $request->phone,
+                'position' => $request->position ?? 'Staff',
+                'company_industry' => $request->company_industry ?? 'Other',
+            ]);
+        } elseif ($request->account_type === 'expert') {
+            $user->assignRole('Consultant');
+            \App\Models\Expert::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'slug' => \Illuminate\Support\Str::slug($request->name),
+                'position' => $request->expertise ?? 'Expert Consultant',
+                'bio' => '-',
+                'photo' => '-',
+                'expertise' => $request->expertise,
+                'linkedin' => $request->linkedin,
+            ]);
+        }
 
         event(new Registered($user));
 

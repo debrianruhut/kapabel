@@ -280,7 +280,7 @@
             <!-- Left Column: Branding & Value Prop -->
             <div class="col-lg-5 brand-col d-none d-lg-flex">
                 <div>
-                    <a href="index.html" class="brand-logo"><img src="assets/images/logo_white.png"
+                    <a href="{{ route('index') }}" class="brand-logo"><img src="assets/images/logo_white.png"
                             alt="Kapabel Indonesia Logo" style="height: 46px; vertical-align: middle;" /></a>
                 </div>
 
@@ -310,12 +310,12 @@
 
                     <!-- Mobile Logo (Visible only on small screens) -->
                     <div class="d-lg-none mb-3 text-center">
-                        <a href="index.html" class="brand-logo text-dark fs-2"><img
-                                src="assets/images/logo_web.png alt=" Kapabel Indonesia Logo"
+                        <a href="{{ route('index') }}" class="brand-logo text-dark fs-2"><img
+                                src="assets/images/logo_web.png" alt="Kapabel Indonesia Logo"
                                 style="height: 46px; vertical-align: middle;" /></a>
                     </div>
 
-                    <a href="index.html" class="back-link mb-4"><i class="bi bi-arrow-left me-2"></i> Back to Home</a>
+                    <a href="{{ route('index') }}" class="back-link mb-4"><i class="bi bi-arrow-left me-2"></i> Back to Home</a>
 
                     <h3 class="mb-1 fw-bold">Log in to your account</h3>
                     <p class="text-muted small mb-4">Select your account type to continue.</p>
@@ -338,24 +338,23 @@
 
                         <!-- TAB 1: CLIENT LOGIN -->
                         <div class="tab-pane fade" id="client-form" role="tabpanel">
-                            <form action="#" method="POST">
+                            <form action="{{ route('login') }}" method="POST">
+                                @csrf
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <label class="form-label">Corporate Email</label>
-                                        <input type="email" class="form-control" placeholder="name@company.com"
-                                            required>
+                                        <input type="email" name="email" class="form-control" placeholder="name@company.com" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <label class="form-label mb-0">Password</label>
-                                            <a href="#" class="forgot-password">Forgot Password?</a>
+                                            <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
                                         </div>
-                                        <input type="password" class="form-control" placeholder="Enter your password"
-                                            required>
+                                        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
                                     </div>
                                     <div class="col-12 mt-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="rememberClient">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="rememberClient">
                                             <label class="form-check-label text-muted small" for="rememberClient">
                                                 Remember me for 30 days
                                             </label>
@@ -370,25 +369,23 @@
 
                         <!-- TAB 2: CONSULTANT LOGIN -->
                         <div class="tab-pane fade show active" id="consultant-form" role="tabpanel">
-                            <form action="#" method="POST">
+                            <form action="{{ route('login') }}" method="POST">
+                                @csrf
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <label class="form-label">Professional Email</label>
-                                        <input type="email" class="form-control" placeholder="email@domain.com"
-                                            required>
+                                        <input type="email" name="email" class="form-control" placeholder="email@domain.com" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <label class="form-label mb-0">Password</label>
-                                            <a href="#" class="forgot-password" style="color: var(--teal-bg);">Forgot
-                                                Password?</a>
+                                            <a href="{{ route('password.request') }}" class="forgot-password" style="color: var(--teal-bg);">Forgot Password?</a>
                                         </div>
-                                        <input type="password" class="form-control" placeholder="Enter your password"
-                                            required>
+                                        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
                                     </div>
                                     <div class="col-12 mt-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="rememberConsultant">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="rememberConsultant">
                                             <label class="form-check-label text-muted small" for="rememberConsultant">
                                                 Remember me for 30 days
                                             </label>
@@ -404,7 +401,7 @@
                     </div> <!-- End Tab Content -->
 
                     <div class="text-center mt-5 pt-3 border-top">
-                        <p class="text-muted small">Don't have an account yet? <a href="register.html"
+                        <p class="text-muted small">Don't have an account yet? <a href="{{ route('register') }}"
                                 class="fw-bold text-decoration-none" style="color: var(--primary-navy);">Sign up
                                 here</a></p>
                     </div>
