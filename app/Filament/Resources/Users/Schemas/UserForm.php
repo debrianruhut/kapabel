@@ -33,11 +33,10 @@ class UserForm
                     ->required(),
                 TextInput::make('password')
                     ->label('Password')
-                    // ->hint('Enter your password')
-                    ->helperText('Minimum 9 characters')
+                    ->helperText('Leave empty to keep current password')
                     ->password()
-                    // ->required()
-                    ->dehydrated(false)
+                    ->dehydrated(fn (?string $state) => filled($state))
+                    ->required(fn (string $context): bool => $context === 'create')
                     ->minLength(9)
                     ->maxLength(255),
 
@@ -50,12 +49,11 @@ class UserForm
                     ->maxLength(255),
 
                 FileUpload::make('photo')
-                    ->label('Photo URL')
-                    // ->hint('Upload your photo')
-                    ->helperText('This is the URL of your photo')
-                    // ->dehydrated(false)
-                    // ->required()
-                    ->image(),
+                    ->label('Photo Profile')
+                    ->image()
+                    ->directory('users')
+                    ->disk('public')
+                    ->helperText('Upload a user avatar image'),
             ]);
     }
 }

@@ -9,13 +9,14 @@ use Illuminate\Support\Str;
 class Expert extends Model
 {
 
-use SoftDeletes;
-protected $fillable = [
+    use SoftDeletes;
+    protected $fillable = [
         'name',
         'slug',
         'position',
         'bio',
         'photo',
+        'expertise',
         'linkedin',
         'email',
         'is_active',

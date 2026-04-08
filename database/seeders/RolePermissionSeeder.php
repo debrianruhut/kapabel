@@ -24,6 +24,9 @@ class RolePermissionSeeder extends Seeder
         $consultantRole = Role::create([
             'name' => 'Consultant'
         ]);
+        $clientRole = Role::create([
+            'name' => 'Client'
+        ]);
         $user = User::create([
             'name' => 'Admin Super',
             'email' => 'admin@kapabelindonesia.com',

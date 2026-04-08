@@ -10,19 +10,22 @@ use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-
+use Filament\Tables\Columns\ImageColumn;
 class UsersTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
+                ImageColumn::make('photo')
+                    ->label('Foto Profil')
+                    ->circular(),
                 TextColumn::make('name')
-                ->sortable()
-                ->searchable(),
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('email')
-                // ->sortable()
-                ->searchable(),
+                    // ->sortable()
+                    ->searchable(),
                 TextColumn::make('roles.name'),
                 TextColumn::make('phone'),
             ])

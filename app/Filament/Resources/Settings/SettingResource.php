@@ -15,11 +15,12 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class SettingResource extends Resource
 {
     protected static ?string $model = Setting::class;
-
+    protected static UnitEnum|string|null $navigationGroup = 'Account';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
 
     public static function form(Schema $schema): Schema
