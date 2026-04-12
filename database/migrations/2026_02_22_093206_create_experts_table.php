@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('linkedin')->nullable();
             $table->string('email')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_owner')->default(false);
             $table->integer('order')->nullable();
             $table->json('certifications')->nullable();
             $table->json('experiences')->nullable();

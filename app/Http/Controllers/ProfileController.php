@@ -9,8 +9,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+use App\Repositories\Contracts\UserRepositoryInterface;
+
 class ProfileController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Display the user's profile form.
      */
@@ -26,13 +35,14 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $validatedData = $request->validated();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->email !== $validatedData['email']) {
+            $validatedData['email_verified_at'] = null;
         }
 
-        $request->user()->save();
+        $this->userRepository->update($user->id, $validatedData);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

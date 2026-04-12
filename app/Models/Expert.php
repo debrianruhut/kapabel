@@ -21,6 +21,7 @@ class Expert extends Model
         'linkedin',
         'email',
         'is_active',
+        'is_owner',
         'order',
         'certifications',
         'experiences',

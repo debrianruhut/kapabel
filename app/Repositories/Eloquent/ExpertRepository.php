@@ -16,7 +16,7 @@ class ExpertRepository implements ExpertRepositoryInterface
 
     public function filterActiveExperts($search, $position)
     {
-        $query = $this->model->where('is_active', true);
+        $query = $this->model->where('is_active', true)->where('is_owner', false);
 
         if (!empty($search)) {
             $query->where('name', 'like', "%{$search}%");
@@ -31,14 +31,16 @@ class ExpertRepository implements ExpertRepositoryInterface
 
     public function getPositions()
     {
-        return $this->model->where('is_active', true)->select('position')->distinct()->pluck('position')->filter();
+        return $this->model->where('is_active', true)->where('is_owner', false)->select('position')->distinct()->pluck('position')->filter();
     }
 
     public function getActiveExpertsForFrontpage(int $limit = 4)
     {
         return $this->model
             ->where('is_active', true)
-            ->latest() // Assumes we want the most recent or we can use another ordering
+            ->where('is_owner', false)
+            ->orderBy('order', 'asc')
+            ->latest()
             ->limit($limit)
             ->get();
     }
@@ -47,6 +49,7 @@ class ExpertRepository implements ExpertRepositoryInterface
     {
         return $this->model
             ->where('is_active', true)
+            ->where('is_owner', false)
             ->latest()
             ->get();
     }
@@ -54,7 +57,8 @@ class ExpertRepository implements ExpertRepositoryInterface
     public function getFounders()
     {
         return $this->model
-            ->where('is_active', false)
+            ->where('is_active', true)
+            ->where('is_owner', true)
             ->orderBy('order', 'asc')
             ->latest()
             ->get();
