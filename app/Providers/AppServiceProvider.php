@@ -40,6 +40,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Contracts\TagRepositoryInterface::class,
             \App\Repositories\Eloquent\TagRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\Contracts\UserRepositoryInterface::class,
+            \App\Repositories\Eloquent\UserRepository::class
+        );
     }
 
     /**

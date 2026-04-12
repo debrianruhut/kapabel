@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'account_type' => ['required', 'in:client,expert'],
             'phone' => ['required', 'string', 'max:255'],
@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             $user->assignRole('Client');
             \App\Models\Client::create([
                 'user_id' => $user->id,
-                'slug' => \Illuminate\Support\Str::slug($request->company_name ?? $request->name),
+                'slug' => \Illuminate\Support\Str::slug($request->company_name),
                 'company_name' => $request->company_name ?? 'N/A',
                 'company_email' => $request->email,
                 'company_phone' => $request->phone,
@@ -58,6 +58,7 @@ class RegisteredUserController extends Controller
         } elseif ($request->account_type === 'expert') {
             $user->assignRole('Consultant');
             \App\Models\Expert::create([
+                'user_id' => $user->id,
                 'name' => $request->name,
                 'email' => $request->email,
                 'slug' => \Illuminate\Support\Str::slug($request->name),

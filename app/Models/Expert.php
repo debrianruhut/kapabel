@@ -11,6 +11,7 @@ class Expert extends Model
 
     use SoftDeletes;
     protected $fillable = [
+        'user_id',
         'name',
         'slug',
         'position',
@@ -24,6 +25,7 @@ class Expert extends Model
         'certifications',
         'experiences',
     ];
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;

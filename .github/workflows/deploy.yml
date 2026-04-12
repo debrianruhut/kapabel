@@ -26,12 +26,12 @@ jobs:
       with:
         node-version: '24'
         
-    - name: 🏗️ NPM Install and Build
+    - name: NPM Install and Build
       run: |
         npm install
         npm run build
         
-    - name: 🚀 Sync Core Laravel Files
+    - name: Sync Core Laravel Files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
@@ -40,7 +40,7 @@ jobs:
         server-dir: kapabelindonesia/
         exclude: '["**/.git*", "**/.git*/**", "**/node_modules/**", "tests/**", ".env.example", "public/**"]'
 
-    - name: 🌐 Sync Public Folder to Public HTML
+    - name: Sync Public Folder to Public HTML
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
