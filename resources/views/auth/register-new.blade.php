@@ -303,11 +303,13 @@
 
                     <!-- Mobile Logo (Visible only on small screens) -->
                     <div class="d-lg-none mb-4 text-center">
-                        <a href="{{ route('index') }}" class="brand-logo text-dark fs-2"><img src="assets/images/logo_web.png"
-                                alt="Kapabel Indonesia Logo" style="height: 46px; vertical-align: middle;" /></a>
+                        <a href="{{ route('index') }}" class="brand-logo text-dark fs-2"><img
+                                src="assets/images/logo_web.png" alt="Kapabel Indonesia Logo"
+                                style="height: 46px; vertical-align: middle;" /></a>
                     </div>
 
-                    <a href="{{ route('index') }}" class="back-link mb-4"><i class="bi bi-arrow-left me-2"></i> Back to Home</a>
+                    <a href="{{ route('index') }}" class="back-link mb-4"><i class="bi bi-arrow-left me-2"></i> Back to
+                        Home</a>
 
                     <h2 class="mb-1">Create Your Account</h2>
                     <p class="text-muted mb-4">Please select the account type that fits your needs.</p>
@@ -336,23 +338,28 @@
                                 <div class="row g-2">
                                     <div class="col-12">
                                         <label class="form-label">Company Name</label>
-                                        <input type="text" name="company_name" class="form-control" placeholder="PT. Inovasi Bisnis Maju" required>
+                                        <input type="text" name="company_name" class="form-control"
+                                            placeholder="PT. Inovasi Bisnis Maju" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">PIC Full Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                                        <input type="text" name="name" class="form-control" placeholder="John Doe"
+                                            required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Position / Job Title</label>
-                                        <input type="text" name="position" class="form-control" placeholder="CFO / Director" required>
+                                        <input type="text" name="position" class="form-control"
+                                            placeholder="CFO / Director" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Corporate Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="name@company.com" required>
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="name@company.com" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="+62 812 3456 7890" required>
+                                        <input type="tel" name="phone" class="form-control"
+                                            placeholder="+62 812 3456 7890" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Industry</label>
@@ -367,11 +374,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Minimum 8 characters" required>
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="Minimum 8 characters" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Confirm Password</label>
-                                        <input type="password" name="password_confirmation" class="form-control" placeholder="Repeat password" required>
+                                        <input type="password" name="password_confirmation" class="form-control"
+                                            placeholder="Repeat password" required>
                                     </div>
                                     <div class="col-12 mt-4">
                                         <div class="form-check">
@@ -398,39 +407,43 @@
                                 <div class="row g-2">
                                     <div class="col-12">
                                         <label class="form-label">Full Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="As per ID card" required>
+                                        <input type="text" name="name" class="form-control" placeholder="As per ID card"
+                                            required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Professional Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="email@domain.com" required>
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="email@domain.com" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="+62 812 3456 7890" required>
+                                        <input type="tel" name="phone" class="form-control"
+                                            placeholder="+62 812 3456 7890" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Primary Area of Expertise</label>
                                         <select name="expertise" class="form-select" required>
                                             <option value="" selected disabled>Select your main specialization</option>
+                                            <option value="tax">Taxation & Transfer Pricing</option>
                                             <option value="strategic">Strategic Planning</option>
-                                            <option value="financial">Financial Advisory & Audit</option>
+                                            <option value="financial">Financial Advisory</option>
                                             <option value="transformation">Business Transformation</option>
-                                            <option value="technology">Technology Consulting</option>
-                                            <option value="marketing">Marketing Strategy</option>
-                                            <option value="hr">Human Resources</option>
                                         </select>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">LinkedIn Profile URL</label>
-                                        <input type="url" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/username" required>
+                                        <input type="url" name="linkedin" class="form-control"
+                                            placeholder="https://linkedin.com/in/username" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Minimum 8 characters" required>
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="Minimum 8 characters" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Confirm Password</label>
-                                        <input type="password" name="password_confirmation" class="form-control" placeholder="Repeat password" required>
+                                        <input type="password" name="password_confirmation" class="form-control"
+                                            placeholder="Repeat password" required>
                                     </div>
                                     <div class="col-12 mt-4">
                                         <div class="form-check">

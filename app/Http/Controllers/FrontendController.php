@@ -139,4 +139,9 @@ class FrontendController extends Controller
         $article = $this->articleRepo->getBySlug($slug);
         return view('pages.blog-detil', compact('article'));
     }
+
+    public function freshGraduate()
+    {
+        return view('pages.fresh-graduate');
+    }
 }

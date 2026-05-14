@@ -14,6 +14,7 @@ Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [FrontendController::class, 'article'])->name('blog.article');
 Route::get('/experts', [FrontendController::class, 'experts'])->name('experts.index');
 Route::get('/expert/{slug}', [FrontendController::class, 'expertDetail'])->name('expert');
+Route::get('/fresh-graduate-program', [FrontendController::class, 'freshGraduate'])->name('fresh-graduate-program');
 
 
 Route::get('/locale/{locale}', function ($locale) {

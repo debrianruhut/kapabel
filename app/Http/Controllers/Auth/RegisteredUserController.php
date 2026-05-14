@@ -23,6 +23,14 @@ class RegisteredUserController extends Controller
     }
 
     /**
+     * Display the fresh graduate registration view.
+     */
+    public function createFreshGraduate(): View
+    {
+        return view('auth.register-fresh-graduate');
+    }
+
+    /**
      * Handle an incoming registration request.
      *
      * @throws \Illuminate\Validation\ValidationException
