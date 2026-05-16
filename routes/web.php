@@ -16,6 +16,10 @@ Route::get('/experts', [FrontendController::class, 'experts'])->name('experts.in
 Route::get('/expert/{slug}', [FrontendController::class, 'expertDetail'])->name('expert');
 Route::get('/fresh-graduate-program', [FrontendController::class, 'freshGraduate'])->name('fresh-graduate-program');
 
+// Legal Pages
+Route::get('/terms-and-conditions-expert', [FrontendController::class, 'termsExpert'])->name('terms.expert');
+Route::get('/terms-and-conditions-client', [FrontendController::class, 'termsClient'])->name('terms.client');
+Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy');
 
 Route::get('/locale/{locale}', function ($locale) {
     if (in_array($locale, ['en', 'id'])) {

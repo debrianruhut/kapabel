@@ -144,4 +144,19 @@ class FrontendController extends Controller
     {
         return view('pages.fresh-graduate');
     }
+
+    public function termsExpert()
+    {
+        return view('pages.terms-expert');
+    }
+
+    public function termsClient()
+    {
+        return view('pages.terms-client');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('pages.privacy-policy');
+    }
 }

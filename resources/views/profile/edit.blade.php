@@ -410,10 +410,10 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="email" class="form-label fw-medium text-dark">Email Address</label>
+                                <label for="email" class="form-label fw-medium text-dark">Email Address <span class="text-muted small fw-normal">(Cannot be changed)</span></label>
                                 <input type="email"
-                                    class="form-control px-3 py-2 border-light-subtle bg-light @error('email') is-invalid @enderror"
-                                    id="email" name="email" value="{{ old('email', $user->email) }}" required>
+                                    class="form-control px-3 py-2 border-light-subtle text-muted bg-light @error('email') is-invalid @enderror"
+                                    id="email" name="email" value="{{ old('email', $user->email) }}" readonly>
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

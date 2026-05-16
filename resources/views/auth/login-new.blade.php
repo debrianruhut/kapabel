@@ -320,6 +320,19 @@
                     <h3 class="mb-1 fw-bold">Log in to your account</h3>
                     <p class="text-muted small mb-4">Select your account type to continue.</p>
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show rounded-3" role="alert">
+                            <strong><i class="bi bi-exclamation-triangle-fill me-2"></i> Login Failed!</strong>
+                            <p class="mb-1 mt-2 small">Please check the following errors:</p>
+                            <ul class="mb-0 small">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs login-tabs" id="loginTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -343,7 +356,7 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <label class="form-label">Corporate Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="name@company.com" required>
+                                        <input type="email" name="email" class="form-control" placeholder="name@company.com" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
@@ -360,8 +373,9 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-12 mt-4">
-                                        <button type="submit" class="btn btn-primary">Log In as Client</button>
+                                    <div class="col-12 mt-4 text-center">
+                                        <button type="submit" class="btn btn-primary w-100 mb-3">Log In as Client</button>
+                                        <p class="small text-muted mb-0">By logging in, you agree to our <a href="{{ route('terms.client') }}" target="_blank">Terms & Conditions</a> and <a href="{{ route('privacy') }}" target="_blank">Privacy Policy</a>.</p>
                                     </div>
                                 </div>
                             </form>
@@ -374,7 +388,7 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <label class="form-label">Professional Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="email@domain.com" required>
+                                        <input type="email" name="email" class="form-control" placeholder="email@domain.com" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
@@ -391,8 +405,9 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-12 mt-4">
-                                        <button type="submit" class="btn btn-expert">Log In as Expert</button>
+                                    <div class="col-12 mt-4 text-center">
+                                        <button type="submit" class="btn btn-expert w-100 mb-3">Log In as Expert</button>
+                                        <p class="small text-muted mb-0">By logging in, you agree to our <a href="{{ route('terms.expert') }}" target="_blank" style="color: var(--teal-bg);">Expert Terms</a> and <a href="{{ route('privacy') }}" target="_blank" style="color: var(--teal-bg);">Privacy Policy</a>.</p>
                                     </div>
                                 </div>
                             </form>

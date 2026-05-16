@@ -314,6 +314,19 @@
                     <h2 class="mb-1">Create Your Account</h2>
                     <p class="text-muted mb-4">Please select the account type that fits your needs.</p>
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show rounded-3" role="alert">
+                            <strong><i class="bi bi-exclamation-triangle-fill me-2"></i> Registration Failed!</strong>
+                            <p class="mb-1 mt-2 small">Please check the following errors:</p>
+                            <ul class="mb-0 small">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs register-tabs" id="registerTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -339,27 +352,27 @@
                                     <div class="col-12">
                                         <label class="form-label">Company Name</label>
                                         <input type="text" name="company_name" class="form-control"
-                                            placeholder="PT. Inovasi Bisnis Maju" required>
+                                            placeholder="PT. Inovasi Bisnis Maju" value="{{ old('company_name') }}" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">PIC Full Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="John Doe"
+                                        <input type="text" name="name" class="form-control" placeholder="John Doe" value="{{ old('name') }}"
                                             required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Position / Job Title</label>
                                         <input type="text" name="position" class="form-control"
-                                            placeholder="CFO / Director" required>
+                                            placeholder="CFO / Director" value="{{ old('position') }}" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Corporate Email</label>
                                         <input type="email" name="email" class="form-control"
-                                            placeholder="name@company.com" required>
+                                            placeholder="name@company.com" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Phone Number</label>
                                         <input type="tel" name="phone" class="form-control"
-                                            placeholder="+62 812 3456 7890" required>
+                                            placeholder="+62 812 3456 7890" value="{{ old('phone') }}" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Industry</label>
@@ -387,8 +400,8 @@
                                             <input class="form-check-input" type="checkbox" value="" id="termsClient"
                                                 required>
                                             <label class="form-check-label text-muted small" for="termsClient">
-                                                I agree to Kapabel's <a href="#">Terms & Conditions</a> and <a
-                                                    href="#">Privacy Policy</a>.
+                                                I agree to Kapabel's <a href="{{ route('terms.client') }}" target="_blank">Terms & Conditions</a> and <a
+                                                    href="{{ route('privacy') }}" target="_blank">Privacy Policy</a>.
                                             </label>
                                         </div>
                                     </div>
@@ -407,18 +420,18 @@
                                 <div class="row g-2">
                                     <div class="col-12">
                                         <label class="form-label">Full Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="As per ID card"
+                                        <input type="text" name="name" class="form-control" placeholder="As per ID card" value="{{ old('name') }}"
                                             required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Professional Email</label>
                                         <input type="email" name="email" class="form-control"
-                                            placeholder="email@domain.com" required>
+                                            placeholder="email@domain.com" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Phone Number</label>
                                         <input type="tel" name="phone" class="form-control"
-                                            placeholder="+62 812 3456 7890" required>
+                                            placeholder="+62 812 3456 7890" value="{{ old('phone') }}" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Primary Area of Expertise</label>
@@ -433,7 +446,7 @@
                                     <div class="col-12">
                                         <label class="form-label">LinkedIn Profile URL (optional)</label>
                                         <input type="url" name="linkedin" class="form-control"
-                                            placeholder="https://linkedin.com/in/username">
+                                            placeholder="https://linkedin.com/in/username" value="{{ old('linkedin') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Password</label>
@@ -450,8 +463,8 @@
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="termsConsultant" required>
                                             <label class="form-check-label text-muted small" for="termsConsultant">
-                                                I agree to Kapabel's <a href="#">Expert Terms & Conditions</a> and <a
-                                                    href="#">Privacy Policy</a>.
+                                                I agree to Kapabel's <a href="{{ route('terms.expert') }}" target="_blank">Expert Terms & Conditions</a> and <a
+                                                    href="{{ route('privacy') }}" target="_blank">Privacy Policy</a>.
                                             </label>
                                         </div>
                                     </div>

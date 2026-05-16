@@ -284,6 +284,19 @@
                             konsultan kami.</p>
                     </div>
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show rounded-3" role="alert">
+                            <strong><i class="bi bi-exclamation-triangle-fill me-2"></i> Pendaftaran Gagal!</strong>
+                            <p class="mb-1 mt-2 small">Mohon periksa kembali data Anda:</p>
+                            <ul class="mb-0 small">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
                     <form action="{{ route('register') }}" method="POST">
                         @csrf
                         <!-- Menggunakan account_type = expert agar fungsi di RegisteredUserController sama persis -->
@@ -292,17 +305,17 @@
                         <div class="row g-3">
                             <div class="col-12">
                                 <label class="form-label">Nama Lengkap</label>
-                                <input type="text" name="name" class="form-control" placeholder="Sesuai KTP / Ijazah"
+                                <input type="text" name="name" class="form-control" placeholder="Sesuai KTP / Ijazah" value="{{ old('name') }}"
                                     required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email Profesional</label>
-                                <input type="email" name="email" class="form-control" placeholder="email@domain.com"
+                                <input type="email" name="email" class="form-control" placeholder="email@domain.com" value="{{ old('email') }}"
                                     required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Nomor WhatsApp / Telepon</label>
-                                <input type="tel" name="phone" class="form-control" placeholder="+62 812 3456 7890"
+                                <input type="tel" name="phone" class="form-control" placeholder="+62 812 3456 7890" value="{{ old('phone') }}"
                                     required>
                             </div>
                             <div class="col-12">
@@ -318,7 +331,7 @@
                             <div class="col-12">
                                 <label class="form-label">Tautan Profil LinkedIn (optional)</label>
                                 <input type="url" name="linkedin" class="form-control"
-                                    placeholder="https://linkedin.com/in/username">
+                                    placeholder="https://linkedin.com/in/username" value="{{ old('linkedin') }}">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Kata Sandi</label>
@@ -334,8 +347,8 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="termsFresh" required>
                                     <label class="form-check-label text-muted small" for="termsFresh">
-                                        Saya menyetujui <a href="#" style="color: var(--teal-bg);">Syarat & Ketentuan
-                                            Konsultan</a> serta <a href="#" style="color: var(--teal-bg);">Kebijakan
+                                        Saya menyetujui <a href="{{ route('terms.expert') }}" target="_blank" style="color: var(--teal-bg);">Syarat & Ketentuan
+                                            Konsultan</a> serta <a href="{{ route('privacy') }}" target="_blank" style="color: var(--teal-bg);">Kebijakan
                                             Privasi</a> Kapabel Indonesia.
                                     </label>
                                 </div>
