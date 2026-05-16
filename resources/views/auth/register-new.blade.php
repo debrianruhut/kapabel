@@ -431,9 +431,9 @@
                                         </select>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label">LinkedIn Profile URL</label>
+                                        <label class="form-label">LinkedIn Profile URL (optional)</label>
                                         <input type="url" name="linkedin" class="form-control"
-                                            placeholder="https://linkedin.com/in/username" required>
+                                            placeholder="https://linkedin.com/in/username">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Password</label>

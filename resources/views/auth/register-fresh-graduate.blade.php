@@ -35,13 +35,20 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Raleway', sans-serif;
             font-weight: 700;
             color: var(--primary-navy);
         }
 
-        .btn, .form-label, .nav-link {
+        .btn,
+        .form-label,
+        .nav-link {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -55,7 +62,8 @@
                 height: 100vh;
             }
 
-            .brand-col, .form-col {
+            .brand-col,
+            .form-col {
                 height: 100vh;
                 overflow-y: auto;
             }
@@ -80,7 +88,7 @@
 
         /* Left Column - Branding */
         .brand-col {
-            background: linear-gradient(135deg, #0A192F 0%, #1A365D 100%);
+            background-color: var(--primary-navy);
             background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
             background-size: 30px 30px;
             color: white;
@@ -89,6 +97,21 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+        }
+
+        .brand-col h1,
+        .brand-col h2,
+        .brand-col h3,
+        .brand-col h4,
+        .brand-col h5,
+        .brand-col h6 {
+            color: #FFFFFF !important;
+        }
+
+        .brand-col p,
+        .brand-col li,
+        .brand-col .text-white-50 {
+            color: rgba(255, 255, 255, 0.9) !important;
         }
 
         .brand-logo {
@@ -110,7 +133,8 @@
         }
 
         /* Form Controls */
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             padding: 0.6rem 1.2rem;
             border: 1px solid #E2E8F0;
             border-radius: 8px;
@@ -119,7 +143,8 @@
             transition: all 0.2s ease;
         }
 
-        .form-control:focus, .form-select:focus {
+        .form-control:focus,
+        .form-select:focus {
             box-shadow: 0 0 0 4px rgba(43, 130, 127, 0.1);
             border-color: var(--teal-bg);
         }
@@ -197,28 +222,35 @@
             <div class="col-lg-5 brand-col d-none d-lg-flex">
                 <div>
                     <a href="{{ route('index') }}" class="brand-logo">
-                        <img src="{{ asset('assets/images/logo_white.png') }}" alt="Kapabel Indonesia Logo" style="height: 46px; vertical-align: middle;" />
+                        <img src="{{ asset('assets/images/logo_white.png') }}" alt="Kapabel Indonesia Logo"
+                            style="height: 46px; vertical-align: middle;" />
                     </a>
                 </div>
 
                 <div class="mb-5">
-                    <span class="badge badge-special text-white" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2);">Jalur Khusus Fresh Graduate</span>
+                    <span class="badge badge-special text-white"
+                        style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2);">Jalur Khusus
+                        Fresh Graduate</span>
                     <h2 class="display-5 text-white mb-4 lh-sm">Mulai Langkah Pertamamu Sebagai Expert Muda.</h2>
                     <p class="lead text-white-50 fs-6 lh-lg mb-4">
-                        Bergabunglah dengan ekosistem elite Kapabel Indonesia. Dampingi klien korporasi memecahkan tantangan bisnis riil dan bangun portofolio profesionalmu sejak awal kelulusan.
+                        Bergabunglah dengan ekosistem elite Kapabel Indonesia. Dampingi klien korporasi memecahkan
+                        tantangan bisnis riil dan bangun portofolio profesionalmu sejak awal kelulusan.
                     </p>
 
                     <ul class="list-unstyled text-white-50 mt-5">
                         <li class="mb-3 d-flex align-items-center">
-                            <i class="bi bi-check-circle-fill text-info me-3 fs-5" style="color: #60A5FA !important;"></i>
+                            <i class="bi bi-check-circle-fill text-info me-3 fs-5"
+                                style="color: #60A5FA !important;"></i>
                             Akses langsung ke studi kasus bisnis nyata
                         </li>
                         <li class="mb-3 d-flex align-items-center">
-                            <i class="bi bi-check-circle-fill text-info me-3 fs-5" style="color: #60A5FA !important;"></i>
+                            <i class="bi bi-check-circle-fill text-info me-3 fs-5"
+                                style="color: #60A5FA !important;"></i>
                             Pendampingan dari konsultan senior & pakar industri
                         </li>
                         <li class="mb-3 d-flex align-items-center">
-                            <i class="bi bi-check-circle-fill text-info me-3 fs-5" style="color: #60A5FA !important;"></i>
+                            <i class="bi bi-check-circle-fill text-info me-3 fs-5"
+                                style="color: #60A5FA !important;"></i>
                             Jadwal fleksibel dengan insentif profesional transparan
                         </li>
                     </ul>
@@ -236,37 +268,42 @@
                     <!-- Mobile Logo -->
                     <div class="d-lg-none mb-4 text-center">
                         <a href="{{ route('index') }}" class="brand-logo text-dark fs-2">
-                            <img src="{{ asset('assets/images/logo_web.png') }}" alt="Kapabel Indonesia Logo" style="height: 46px; vertical-align: middle;" />
+                            <img src="{{ asset('assets/images/logo_web.png') }}" alt="Kapabel Indonesia Logo"
+                                style="height: 46px; vertical-align: middle;" />
                         </a>
                     </div>
 
-                    <a href="{{ url('/fresh-graduate') }}" class="back-link mb-4">
+                    <a href="{{ url('/fresh-graduate-program') }}" class="back-link mb-4">
                         <i class="bi bi-arrow-left me-2"></i> Kembali ke Info Program
                     </a>
 
                     <div class="mb-4">
                         <span class="badge-special">Jalur Expert Consultant</span>
                         <h2 class="mb-1">Pendaftaran Expert Muda</h2>
-                        <p class="text-muted small">Lengkapi profil profesionalmu untuk bergabung ke dalam talent pool konsultan kami.</p>
+                        <p class="text-muted small">Lengkapi profil profesionalmu untuk bergabung ke dalam talent pool
+                            konsultan kami.</p>
                     </div>
 
                     <form action="{{ route('register') }}" method="POST">
                         @csrf
                         <!-- Menggunakan account_type = expert agar fungsi di RegisteredUserController sama persis -->
                         <input type="hidden" name="account_type" value="expert">
-                        
+
                         <div class="row g-3">
                             <div class="col-12">
                                 <label class="form-label">Nama Lengkap</label>
-                                <input type="text" name="name" class="form-control" placeholder="Sesuai KTP / Ijazah" required>
+                                <input type="text" name="name" class="form-control" placeholder="Sesuai KTP / Ijazah"
+                                    required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email Profesional</label>
-                                <input type="email" name="email" class="form-control" placeholder="email@domain.com" required>
+                                <input type="email" name="email" class="form-control" placeholder="email@domain.com"
+                                    required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Nomor WhatsApp / Telepon</label>
-                                <input type="tel" name="phone" class="form-control" placeholder="+62 812 3456 7890" required>
+                                <input type="tel" name="phone" class="form-control" placeholder="+62 812 3456 7890"
+                                    required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Fokus Utama Keahlian (Spesialisasi)</label>
@@ -279,33 +316,41 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label class="form-label">Tautan Profil LinkedIn</label>
-                                <input type="url" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/username" required>
+                                <label class="form-label">Tautan Profil LinkedIn (optional)</label>
+                                <input type="url" name="linkedin" class="form-control"
+                                    placeholder="https://linkedin.com/in/username">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Kata Sandi</label>
-                                <input type="password" name="password" class="form-control" placeholder="Minimal 8 karakter" required>
+                                <input type="password" name="password" class="form-control"
+                                    placeholder="Minimal 8 karakter" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Konfirmasi Kata Sandi</label>
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="Ulangi kata sandi" required>
+                                <input type="password" name="password_confirmation" class="form-control"
+                                    placeholder="Ulangi kata sandi" required>
                             </div>
                             <div class="col-12 mt-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="termsFresh" required>
                                     <label class="form-check-label text-muted small" for="termsFresh">
-                                        Saya menyetujui <a href="#" style="color: var(--teal-bg);">Syarat & Ketentuan Konsultan</a> serta <a href="#" style="color: var(--teal-bg);">Kebijakan Privasi</a> Kapabel Indonesia.
+                                        Saya menyetujui <a href="#" style="color: var(--teal-bg);">Syarat & Ketentuan
+                                            Konsultan</a> serta <a href="#" style="color: var(--teal-bg);">Kebijakan
+                                            Privasi</a> Kapabel Indonesia.
                                     </label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-expert py-3 mt-2">Daftar Sebagai Expert Muda</button>
+                                <button type="submit" class="btn btn-expert py-3 mt-2">Daftar Sebagai Expert
+                                    Muda</button>
                             </div>
                         </div>
                     </form>
 
                     <div class="text-center mt-4 pt-3 border-top">
-                        <p class="text-muted small">Sudah memiliki akun? <a href="{{ route('login') }}" class="fw-bold text-decoration-none" style="color: var(--teal-bg);">Masuk di sini</a></p>
+                        <p class="text-muted small">Sudah memiliki akun? <a href="{{ route('login') }}"
+                                class="fw-bold text-decoration-none" style="color: var(--teal-bg);">Masuk di sini</a>
+                        </p>
                     </div>
 
                 </div>
