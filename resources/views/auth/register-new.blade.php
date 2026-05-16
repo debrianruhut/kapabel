@@ -400,8 +400,8 @@
                                             <input class="form-check-input" type="checkbox" value="" id="termsClient"
                                                 required>
                                             <label class="form-check-label text-muted small" for="termsClient">
-                                                I agree to Kapabel's <a href="{{ route('terms.client') }}" target="_blank">Terms & Conditions</a> and <a
-                                                    href="{{ route('privacy') }}" target="_blank">Privacy Policy</a>.
+                                                I agree to Kapabel's <a href="{{ route('terms.client') }}">Terms & Conditions</a> and <a
+                                                    href="{{ route('privacy') }}">Privacy Policy</a>.
                                             </label>
                                         </div>
                                     </div>
@@ -463,8 +463,8 @@
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="termsConsultant" required>
                                             <label class="form-check-label text-muted small" for="termsConsultant">
-                                                I agree to Kapabel's <a href="{{ route('terms.expert') }}" target="_blank">Expert Terms & Conditions</a> and <a
-                                                    href="{{ route('privacy') }}" target="_blank">Privacy Policy</a>.
+                                                I agree to Kapabel's <a href="{{ route('terms.expert') }}">Expert Terms & Conditions</a> and <a
+                                                    href="{{ route('privacy') }}">Privacy Policy</a>.
                                             </label>
                                         </div>
                                     </div>

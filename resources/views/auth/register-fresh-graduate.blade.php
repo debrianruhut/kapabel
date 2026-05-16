@@ -347,8 +347,8 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="termsFresh" required>
                                     <label class="form-check-label text-muted small" for="termsFresh">
-                                        Saya menyetujui <a href="{{ route('terms.expert') }}" target="_blank" style="color: var(--teal-bg);">Syarat & Ketentuan
-                                            Konsultan</a> serta <a href="{{ route('privacy') }}" target="_blank" style="color: var(--teal-bg);">Kebijakan
+                                        Saya menyetujui <a href="{{ route('terms.expert') }}" style="color: var(--teal-bg);">Syarat & Ketentuan
+                                            Konsultan</a> serta <a href="{{ route('privacy') }}" style="color: var(--teal-bg);">Kebijakan
                                             Privasi</a> Kapabel Indonesia.
                                     </label>
                                 </div>

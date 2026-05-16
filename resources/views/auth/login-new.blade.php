@@ -315,7 +315,8 @@
                                 style="height: 46px; vertical-align: middle;" /></a>
                     </div>
 
-                    <a href="{{ route('index') }}" class="back-link mb-4"><i class="bi bi-arrow-left me-2"></i> Back to Home</a>
+                    <a href="{{ route('index') }}" class="back-link mb-4"><i class="bi bi-arrow-left me-2"></i> Back to
+                        Home</a>
 
                     <h3 class="mb-1 fw-bold">Log in to your account</h3>
                     <p class="text-muted small mb-4">Select your account type to continue.</p>
@@ -356,26 +357,34 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <label class="form-label">Corporate Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="name@company.com" value="{{ old('email') }}" required>
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="name@company.com" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <label class="form-label mb-0">Password</label>
-                                            <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
+                                            <a href="{{ route('password.request') }}" class="forgot-password">Forgot
+                                                Password?</a>
                                         </div>
-                                        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="Enter your password" required>
                                     </div>
                                     <div class="col-12 mt-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="rememberClient">
+                                            <input class="form-check-input" type="checkbox" name="remember"
+                                                id="rememberClient">
                                             <label class="form-check-label text-muted small" for="rememberClient">
                                                 Remember me for 30 days
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-12 mt-4 text-center">
-                                        <button type="submit" class="btn btn-primary w-100 mb-3">Log In as Client</button>
-                                        <p class="small text-muted mb-0">By logging in, you agree to our <a href="{{ route('terms.client') }}" target="_blank">Terms & Conditions</a> and <a href="{{ route('privacy') }}" target="_blank">Privacy Policy</a>.</p>
+                                        <button type="submit" class="btn btn-primary w-100 mb-3">Log In as
+                                            Client</button>
+                                        <p class="small text-muted mb-0">By logging in, you agree to our <a
+                                                href="{{ route('terms.client') }}" target="_blank">Terms &
+                                                Conditions</a> and <a href="{{ route('privacy') }}"
+                                                target="_blank">Privacy Policy</a>.</p>
                                     </div>
                                 </div>
                             </form>
@@ -388,26 +397,34 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <label class="form-label">Professional Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="email@domain.com" value="{{ old('email') }}" required>
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="email@domain.com" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <label class="form-label mb-0">Password</label>
-                                            <a href="{{ route('password.request') }}" class="forgot-password" style="color: var(--teal-bg);">Forgot Password?</a>
+                                            <a href="{{ route('password.request') }}" class="forgot-password"
+                                                style="color: var(--teal-bg);">Forgot Password?</a>
                                         </div>
-                                        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="Enter your password" required>
                                     </div>
                                     <div class="col-12 mt-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="rememberConsultant">
+                                            <input class="form-check-input" type="checkbox" name="remember"
+                                                id="rememberConsultant">
                                             <label class="form-check-label text-muted small" for="rememberConsultant">
                                                 Remember me for 30 days
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-12 mt-4 text-center">
-                                        <button type="submit" class="btn btn-expert w-100 mb-3">Log In as Expert</button>
-                                        <p class="small text-muted mb-0">By logging in, you agree to our <a href="{{ route('terms.expert') }}" target="_blank" style="color: var(--teal-bg);">Expert Terms</a> and <a href="{{ route('privacy') }}" target="_blank" style="color: var(--teal-bg);">Privacy Policy</a>.</p>
+                                        <button type="submit" class="btn btn-expert w-100 mb-3">Log In as
+                                            Expert</button>
+                                        <p class="small text-muted mb-0">By logging in, you agree to our <a
+                                                href="{{ route('terms.expert') }}" style="color: var(--teal-bg);">Expert
+                                                Terms</a> and <a href="{{ route('privacy') }}"
+                                                style="color: var(--teal-bg);">Privacy Policy</a>.</p>
                                     </div>
                                 </div>
                             </form>
